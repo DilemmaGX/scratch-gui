@@ -10,10 +10,58 @@ import extensionLibraryContent, {
     galleryLoading,
     galleryMore
 } from '../lib/libraries/extensions/index.jsx';
-import extensionTags from '../lib/libraries/tw-extension-tags';
 
 import LibraryComponent from '../components/library/library.jsx';
 import extensionIcon from '../components/action-menu/icon--sprite.svg';
+
+/* Utils made in Geko only */
+import extensionTags from '../geko/extension-tags.js';
+import libs from '../geko/extension-libraries.js';
+/* ======================= */
+
+const fetchLibrary = async (info, base, tag) => {
+    const res = await fetch(info);
+    if (!res.ok) {
+        throw new Error(`HTTP status ${res.status}`);
+    }
+    let data = await res.json();
+    data = data.extensions.map(extension => ({
+        name: extension.name,
+        nameTranslations: extension.nameTranslations || {},
+        description: extension.description,
+        descriptionTranslations: extension.descriptionTranslations || {},
+        extensionId: extension.id,
+        extensionURL: `${base}${extension.slug}.js`,
+        iconURL: `${base}${extension.image || 'images/unknown.svg'}`,
+        tags: [tag],
+        credits: [
+            ...(extension.by || []),
+            ...(extension.original || [])
+        ].map(credit => {
+            if (credit.link) {
+                return (
+                    <a
+                        href={credit.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={credit.name}
+                    >
+                        {credit.name}
+                    </a>
+                );
+            }
+            return credit.name;
+        }),
+        docsURI: extension.docs ? `${base}${extension.slug}` : null,
+        samples: extension.samples ? extension.samples.map(sample => ({
+            href: `${process.env.ROOT}editor?project_url=${base}samples/${encodeURIComponent(sample)}.sb3`,
+            text: sample
+        })) : null,
+        incompatibleWithScratch: true,
+        featured: true
+    }));
+    return data;
+};
 
 const messages = defineMessages({
     extensionTitle: {
@@ -39,50 +87,7 @@ const translateGalleryItem = (extension, locale) => ({
     description: extension.descriptionTranslations[locale] || extension.description
 });
 
-let cachedGallery = null;
-
-const fetchLibrary = async () => {
-    const res = await fetch('https://extensions.turbowarp.org/generated-metadata/extensions-v0.json');
-    if (!res.ok) {
-        throw new Error(`HTTP status ${res.status}`);
-    }
-    const data = await res.json();
-    return data.extensions.map(extension => ({
-        name: extension.name,
-        nameTranslations: extension.nameTranslations || {},
-        description: extension.description,
-        descriptionTranslations: extension.descriptionTranslations || {},
-        extensionId: extension.id,
-        extensionURL: `https://extensions.turbowarp.org/${extension.slug}.js`,
-        iconURL: `https://extensions.turbowarp.org/${extension.image || 'images/unknown.svg'}`,
-        tags: ['tw'],
-        credits: [
-            ...(extension.by || []),
-            ...(extension.original || [])
-        ].map(credit => {
-            if (credit.link) {
-                return (
-                    <a
-                        href={credit.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={credit.name}
-                    >
-                        {credit.name}
-                    </a>
-                );
-            }
-            return credit.name;
-        }),
-        docsURI: extension.docs ? `https://extensions.turbowarp.org/${extension.slug}` : null,
-        samples: extension.samples ? extension.samples.map(sample => ({
-            href: `${process.env.ROOT}editor?project_url=https://extensions.turbowarp.org/samples/${encodeURIComponent(sample)}.sb3`,
-            text: sample
-        })) : null,
-        incompatibleWithScratch: true,
-        featured: true
-    }));
-};
+const cachedGallery = null;
 
 class ExtensionLibrary extends React.PureComponent {
     constructor (props) {
@@ -98,27 +103,23 @@ class ExtensionLibrary extends React.PureComponent {
     }
     componentDidMount () {
         if (!this.state.gallery) {
-            const timeout = setTimeout(() => {
-                this.setState({
-                    galleryTimedOut: true
-                });
-            }, 750);
 
-            fetchLibrary()
-                .then(gallery => {
-                    cachedGallery = gallery;
-                    this.setState({
-                        gallery
-                    });
-                    clearTimeout(timeout);
-                })
-                .catch(error => {
-                    log.error(error);
-                    this.setState({
-                        galleryError: error
-                    });
-                    clearTimeout(timeout);
-                });
+            /**
+             * Get all extensions from library.
+             *
+             * See `../geko/extension-libraries.js` for mor details.
+             */
+            const autoFetch = () => {
+                const gallery = [];
+                const promises = libs.map(lib => fetchLibrary(lib.info, lib.base, lib.tag));
+                Promise.all(promises)
+                    .then(results => {
+                        const mergedGallery = results.reduce((acc, result) => acc.concat(result), gallery);
+                        this.setState({gallery: mergedGallery});
+                    })
+                    .catch(error => console.error(error));
+            };
+            autoFetch();
         }
     }
     handleItemSelect (item) {

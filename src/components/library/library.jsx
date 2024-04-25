@@ -222,9 +222,7 @@ class LibraryComponent extends React.Component {
                     if (typeof dataItem.name === 'string') {
                         search.push(dataItem.name);
                     } else {
-                        search.push(this.props.intl.formatMessage(dataItem.name.props, {
-                            APP_NAME
-                        }));
+                        search.push(this.props.intl.formatMessage(dataItem.name.props, {APP_NAME}));
                     }
                 }
                 if (dataItem.description) {

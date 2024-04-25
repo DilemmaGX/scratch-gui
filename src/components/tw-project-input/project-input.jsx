@@ -9,6 +9,7 @@ import styles from './project-input.css';
 import {setProjectId} from '../../lib/tw-navigation-utils';
 
 const PROJECT_BASE = 'https://scratch.mit.edu/projects/';
+// const PROJECT_BASE = 'https://www.ccw.site/details/';
 
 const messages = defineMessages({
     tooltip: {

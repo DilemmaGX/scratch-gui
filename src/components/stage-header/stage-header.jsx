@@ -12,10 +12,10 @@ import Controls from '../../containers/controls.jsx';
 import {getStageDimensions} from '../../lib/screen-utils';
 import {STAGE_DISPLAY_SIZES, STAGE_SIZE_MODES} from '../../lib/layout-constants';
 
-import fullScreenIcon from './icon--fullscreen.svg';
-import unFullScreenIcon from './icon--unfullscreen.svg';
-import largeStageIcon from '!../../lib/tw-recolor/build!./icon--large-stage.svg';
-import smallStageIcon from '!../../lib/tw-recolor/build!./icon--small-stage.svg';
+import fullScreenIcon from './FluentFullScreenMaximize16Filled.svg';
+import unFullScreenIcon from './FluentFullScreenMinimize16Filled.svg';
+import largeStageIcon from '!../../lib/tw-recolor/build!./FluentResizeLarge16Regular.svg';
+import smallStageIcon from '!../../lib/tw-recolor/build!./FluentResizeSmall16Regular.svg';
 import fullStageIcon from '!../../lib/tw-recolor/build!./icon--full-stage.svg';
 import settingsIcon from './icon--settings.svg';
 

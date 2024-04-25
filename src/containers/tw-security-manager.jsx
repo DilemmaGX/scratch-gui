@@ -23,10 +23,16 @@ const manuallyTrustExtension = url => {
  * @returns {boolean} True if the extension can is trusted
  */
 const isTrustedExtension = url => (
-    // Always trust our official extension repostiory.
+    // TurboWarp Official
     url.startsWith('https://extensions.turbowarp.org/') ||
 
-    // For development.
+    // Geko
+    url.startsWith('https://dilemmagx.github.io/') ||
+
+    // TurboWarp CN
+    url.startsWith('https://extensions.turbowarp.cn/') ||
+
+    // For development
     url.startsWith('http://localhost:8000/') ||
 
     extensionsTrustedByUser.has(url)

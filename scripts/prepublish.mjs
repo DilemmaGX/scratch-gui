@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable linebreak-style */
 // From the NPM docs:
 // "If you need to perform operations on your package before it is used, in a way that is not dependent on the
 // operating system or architecture of the target system, use a prepublish script."
@@ -9,7 +11,7 @@ import path from 'path';
 
 import crossFetch from 'cross-fetch';
 import yauzl from 'yauzl';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 
 /** @typedef {import('yauzl').Entry} ZipEntry */
 /** @typedef {import('yauzl').ZipFile} ZipFile */
@@ -33,7 +35,7 @@ const basePath = path.join(__dirname, '..');
 const extractFirstMatchingFile = (filter, relativeDestDir, zipBuffer) => new Promise((resolve, reject) => {
     try {
         let extractedFileName;
-        yauzl.fromBuffer(zipBuffer, {lazyEntries: true}, (zipError, zipfile) => {
+        yauzl.fromBuffer(zipBuffer, { lazyEntries: true }, (zipError, zipfile) => {
             if (zipError) {
                 throw zipError;
             }
@@ -60,7 +62,7 @@ const extractFirstMatchingFile = (filter, relativeDestDir, zipBuffer) => new Pro
                     const relativeDestFile = path.join(relativeDestDir, baseName);
                     console.info(`Extracting ${relativeDestFile}`);
                     const absoluteDestDir = path.join(basePath, relativeDestDir);
-                    fs.mkdirSync(absoluteDestDir, {recursive: true});
+                    fs.mkdirSync(absoluteDestDir, { recursive: true });
                     const absoluteDestFile = path.join(basePath, relativeDestFile);
                     const outStream = fs.createWriteStream(absoluteDestFile);
                     readStream.on('end', () => {
@@ -76,11 +78,13 @@ const extractFirstMatchingFile = (filter, relativeDestDir, zipBuffer) => new Pro
     }
 });
 
+/* There might be connection errors, so I simply downloaded it from browser and pasted it. Or else there would be a problem loading. */
 const downloadMicrobitHex = async () => {
-    const url = 'https://downloads.scratch.mit.edu/microbit/scratch-microbit.hex.zip';
+    /*
+    const url = 'http://127.0.0.1:5500/scripts/resources/scratch-microbit-1.2.0.hex.zip';
     console.info(`Downloading ${url}`);
-    const response = await crossFetch(url);
-    const zipBuffer = Buffer.from(await response.arrayBuffer());
+    const response = await fetch(url);
+    const zipBuffer = await response.arrayBuffer();
     const relativeHexDir = path.join('static', 'microbit');
     const hexFileName = await extractFirstMatchingFile(
         entry => /\.hex$/.test(entry.fileName),
@@ -91,7 +95,7 @@ const downloadMicrobitHex = async () => {
     const relativeGeneratedDir = path.join('src', 'generated');
     const relativeGeneratedFile = path.join(relativeGeneratedDir, 'microbit-hex-url.cjs');
     const absoluteGeneratedDir = path.join(basePath, relativeGeneratedDir);
-    fs.mkdirSync(absoluteGeneratedDir, {recursive: true});
+    fs.mkdirSync(absoluteGeneratedDir, { recursive: true });
     const absoluteGeneratedFile = path.join(basePath, relativeGeneratedFile);
     const requirePath = `./${path
         .relative(relativeGeneratedDir, relativeHexFile)
@@ -108,6 +112,7 @@ const downloadMicrobitHex = async () => {
         ].join('\n')
     );
     console.info(`Wrote ${relativeGeneratedFile}`);
+    */
 };
 
 const prepublish = async () => {
