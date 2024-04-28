@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-literals */
 /**
  * Copyright (C) 2021-2023 Thomas Weber
  *
@@ -228,11 +229,13 @@ const Tags = ({manifest}) => (
     <span className={styles.tagContainer}>
         {manifest.tags.includes('recommended') && (
             <span className={classNames(styles.tag, styles.tagRecommended)}>
+                ⚡
                 {settingsTranslations.tagRecommended}
             </span>
         )}
         {manifest.tags.includes('theme') && (
             <span className={classNames(styles.tag, styles.tagTheme)}>
+
                 {settingsTranslations.tagTheme}
             </span>
         )}
@@ -243,11 +246,13 @@ const Tags = ({manifest}) => (
         )}
         {manifest.tags.includes('new') && (
             <span className={classNames(styles.tag, styles.tagNew)}>
+                ✨
                 {settingsTranslations.tagNew}
             </span>
         )}
         {manifest.tags.includes('danger') && (
             <span className={classNames(styles.tag, styles.tagDanger)}>
+                💀
                 {settingsTranslations.tagDanger}
             </span>
         )}

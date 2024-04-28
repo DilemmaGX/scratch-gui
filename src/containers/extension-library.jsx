@@ -12,7 +12,6 @@ import extensionLibraryContent, {
 } from '../lib/libraries/extensions/index.jsx';
 
 import LibraryComponent from '../components/library/library.jsx';
-import extensionIcon from '../components/action-menu/icon--sprite.svg';
 
 /* Utils made in Geko only */
 import extensionTags from '../geko/extension-tags.js';
@@ -32,7 +31,7 @@ const fetchLibrary = async (info, base, tag) => {
         descriptionTranslations: extension.descriptionTranslations || {},
         extensionId: extension.id,
         extensionURL: `${base}${extension.slug}.js`,
-        iconURL: `${base}${extension.image || 'images/unknown.svg'}`,
+        iconURL: extension.image ? `${base}${extension.image}` : 'https://dilemmagx.github.io/Geko-Extension-Gallery/img/default.svg',
         tags: [tag],
         credits: [
             ...(extension.by || []),
@@ -74,7 +73,7 @@ const messages = defineMessages({
 const toLibraryItem = extension => {
     if (typeof extension === 'object') {
         return ({
-            rawURL: extension.iconURL || extensionIcon,
+            rawURL: extension.iconURL || 'https://dilemmagx.github.io/Geko-Extension-Gallery/img/default.svg',
             ...extension
         });
     }

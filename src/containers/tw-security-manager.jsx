@@ -31,6 +31,9 @@ const isTrustedExtension = url => (
 
     // TurboWarp CN
     url.startsWith('https://extensions.turbowarp.cn/') ||
+    
+    // rCodenow
+    url.startsWith('https://0832.ink/Gallery/') ||
 
     // For development
     url.startsWith('http://localhost:8000/') ||
