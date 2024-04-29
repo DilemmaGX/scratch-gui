@@ -2,6 +2,10 @@
 
 .community-button {
     box-shadow: 0 0 0 1px $ui-black-transparent;
+    transition: 100ms ease;
+    &:hover{
+        background-color: color-mix(in srgb, rgba(0,0,0,1) 1%, $ui-black-transparent);
+    }
 }
 
 .community-button-icon {

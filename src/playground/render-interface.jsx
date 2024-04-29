@@ -106,9 +106,9 @@ class Interface extends React.Component {
     }
     handleUpdateProjectTitle (title, isDefault) {
         if (isDefault || !title) {
-            document.title = `${APP_NAME} - ${this.props.intl.formatMessage(messages.defaultTitle)}`;
+            document.title = `${APP_NAME}`;
         } else {
-            document.title = `${title} - ${APP_NAME}`;
+            document.title = `${APP_NAME}`;
         }
     }
     render () {
@@ -122,7 +122,6 @@ class Interface extends React.Component {
             isPlayerOnly,
             isRtl,
             projectId,
-            /* eslint-enable no-unused-vars */
             ...props
         } = this.props;
         const isHomepage = isPlayerOnly && !isFullScreen;

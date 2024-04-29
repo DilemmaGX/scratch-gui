@@ -4,6 +4,10 @@
 /* https://github.com/griffpatch/Scratch3-Dev-Tools/blob/0.2.4/inject3.js#L1804-L1807 */
 .see-inside-button {
     box-shadow: 0 0 0 1px $ui-black-transparent;
+    transition: 100ms ease;
+    &:hover{
+        background-color: color-mix(in srgb, rgba(0,0,0,1) 1%, $ui-black-transparent);
+    }
 }
 
 .see-inside-button-icon {

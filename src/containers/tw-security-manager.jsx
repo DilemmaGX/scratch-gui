@@ -253,7 +253,7 @@ class TWSecurityManagerComponent extends React.Component {
                 unsandboxed: this.state.persistedUnsandboxed,
                 onChangeUnsandboxed: this.handleChangeUnsandboxed.bind(this)
             });
-            if (this.state.data.unsandboxed) {
+            if (allowed && this.state.data.unsandboxed) {
                 manuallyTrustExtension(url);
             }
             this.setState({
