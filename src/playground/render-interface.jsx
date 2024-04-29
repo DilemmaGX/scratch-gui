@@ -94,6 +94,47 @@ if (AddonChannels.changeChannel) {
 
 runAddons();
 
+const Footer = () => (
+    <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+            <div className={styles.footerColumns}>
+                <div className={styles.footerSection}>
+                    <a href="credits.html">
+                        <FormattedMessage
+                            defaultMessage="Credits"
+                            description="Credits link in footer"
+                            id="tw.footer.credits"
+                        />
+                    </a>
+                    <a href="privacy.html">
+                        <FormattedMessage
+                            defaultMessage="Privacy Policy"
+                            description="Link to privacy policy"
+                            id="tw.privacy"
+                        />
+                    </a>
+                </div>
+                <div className={styles.footerSection}>
+                    <a href="https://github.com/DilemmaGX/GekoWarp/issues/new">
+                        <FormattedMessage
+                            defaultMessage="Feedback & Bugs"
+                            description="Link to feedback/bugs page"
+                            id="tw.feedback"
+                        />
+                    </a>
+                    <a href="https://github.com/DilemmaGX/scratch-gui">
+                        <FormattedMessage
+                            defaultMessage="Source Code"
+                            description="Link to source code"
+                            id="tw.code"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+);
+
 class Interface extends React.Component {
     constructor (props) {
         super(props);
@@ -232,7 +273,7 @@ class Interface extends React.Component {
                         </React.Fragment>
                     ) : null}
                 </div>
-                {isHomepage}
+                {isHomepage && <Footer />}
             </div>
         );
     }

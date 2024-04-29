@@ -881,6 +881,7 @@ class MenuBar extends React.Component {
                                 </span>
                             </div>
                         )}
+
                         {this.props.onClickSettingsModal && (
                             <div
                                 className={classNames(styles.menuBarItem, styles.hoverable)}

@@ -13,14 +13,14 @@ const fromHardcoded = ({userID, username, userBase}) => {
     const result = {
         text: username
     };
-    if (!userBase){
+    if (!userBase) {
         // Maybe try to have a default image?
     }
     if (username && userBase === 'scratch') {
         result.href = `https://scratch.mit.edu/users/${username}/`;
         result.image = `https://trampoline.turbowarp.org/avatars/${userID}`;
     } else if (username && userBase === 'github') { // For users on github, they don't need to submit a userID.
-        if (userID){
+        if (userID) {
             result.href = `https://github.com/${userID}/`;
             result.image = `https://avatars.githubusercontent.com/${userID}`;
         } else {

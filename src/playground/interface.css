@@ -63,6 +63,9 @@ a {
 }
 
 .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     padding: 10px 0;
     margin-top: 10px;
     border-top: 2px solid $ui-black-transparent;
@@ -80,6 +83,7 @@ a {
     margin: 5px 0 10px 0;
 }
 .footer-columns {
+    text-align: center;
     display: flex;
     justify-content: center;
     justify-items: center;
