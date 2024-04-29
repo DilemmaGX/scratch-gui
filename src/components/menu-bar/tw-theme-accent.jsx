@@ -14,20 +14,20 @@ import {persistTheme} from '../../lib/themes/themePersistance.js';
 import styles from './settings-menu.css';
 
 const options = defineMessages({
+    [ACCENT_BLUE]: {
+        defaultMessage: 'GekoWarp Blue',
+        description: 'Name of the blue color scheme. Tweaked by GekoWarp with <3.',
+        id: 'tw.accent.blue'
+    },
     [ACCENT_RED]: {
-        defaultMessage: 'Red',
+        defaultMessage: 'TurboWarp Red',
         description: 'Name of the red color scheme, used by TurboWarp by default.',
         id: 'tw.accent.red'
     },
     [ACCENT_PURPLE]: {
-        defaultMessage: 'Purple',
+        defaultMessage: 'Scratch Purple',
         description: 'Name of the purple color scheme. Matches modern Scratch.',
         id: 'tw.accent.purple'
-    },
-    [ACCENT_BLUE]: {
-        defaultMessage: 'Blue',
-        description: 'Name of the blue color scheme. Matches Scratch before the high contrast update.',
-        id: 'tw.accent.blue'
     }
 });
 

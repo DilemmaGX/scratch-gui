@@ -298,9 +298,9 @@
         "tw.viewOnScratch": "Zhlédnout projekt na Scratchi"
     },
     "de": {
-        "tw.accent.blue": "Blau",
-        "tw.accent.purple": "Lila",
-        "tw.accent.red": "Rot",
+        "tw.accent.blue": "GekoWarp Blau",
+        "tw.accent.purple": "Scratch Lila",
+        "tw.accent.red": "TurboWarp Rot",
         "tw.alerts.creatingRestorePoint": "Wiederherstellungspunkt wird erstellt...",
         "tw.alerts.lostPeripheralConnection": "Verbindung zu {extensionName} verloren.",
         "tw.alerts.restorePointError": "Der Wiederherstellpunkt konnte nicht erstellt werden",
@@ -984,9 +984,9 @@
         "tw.viewOnScratch": "Projekt megtekintése a Scratchen."
     },
     "it": {
-        "tw.accent.blue": "Azzurro",
-        "tw.accent.purple": "Viola",
-        "tw.accent.red": "Rosso",
+        "tw.accent.blue": "GekoWarpAzzurro",
+        "tw.accent.purple": "Scratch Viola",
+        "tw.accent.red": "TurboWarp Rosso",
         "tw.alerts.creatingRestorePoint": "Creazione di un punto di ripristino...",
         "tw.alerts.lostPeripheralConnection": "Persa la connessione a {extensionName}.",
         "tw.alerts.restorePointError": "Impossibile creare il punto di ripristino",
@@ -1220,9 +1220,9 @@
         "tw.webglModal.description": "Il tuo browser {webGlLink}. Questa tecnologia è necessaria per poter usare questo sito. Prova ad aggiornare il tuo browser e i tuoi driver video o a riavviare il tuo computer."
     },
     "ja": {
-        "tw.accent.blue": "青",
-        "tw.accent.purple": "紫",
-        "tw.accent.red": "赤",
+        "tw.accent.blue": "GekoWarp 青",
+        "tw.accent.purple": "Scratch 紫",
+        "tw.accent.red": "TurboWarp 赤",
         "tw.alerts.creatingRestorePoint": "復元ポイントを作成しています…",
         "tw.alerts.lostPeripheralConnection": "{extensionName}との接続が切れました。",
         "tw.alerts.restorePointError": "復元ポイントを作成できませんでした",
@@ -1868,9 +1868,9 @@
         "tw.viewOnScratch": "Peržiurėti projektą per Scratch"
     },
     "nb": {
-        "tw.accent.blue": "Blå",
-        "tw.accent.purple": "Lilla",
-        "tw.accent.red": "Rød",
+        "tw.accent.blue": "GekoWarp Blå",
+        "tw.accent.purple": "Scratch Lilla",
+        "tw.accent.red": "TurboWarp Rød",
         "tw.alerts.creatingRestorePoint": "Oppretter gjenopprettingspunkt...",
         "tw.alerts.lostPeripheralConnection": "Mistet forbindelsen til {extensionName}.",
         "tw.alerts.restorePointError": "Kunne ikke opprette gjenopprettingspunkt",
@@ -2105,9 +2105,9 @@
         "tw.webglModal.description": "Nettleseren din {webGlLink} som er nødvendig for at dette nettstedet skal kjøre. Prøv å oppdatere nettleseren og grafikkdriverne eller start datamaskinen på nytt."
     },
     "nl": {
-        "tw.accent.blue": "Blauw",
-        "tw.accent.purple": "Paars",
-        "tw.accent.red": "Rood",
+        "tw.accent.blue": "GekoWarp Blauw",
+        "tw.accent.purple": "Scratch Paars",
+        "tw.accent.red": "Turbowarp Rood",
         "tw.alerts.creatingRestorePoint": "Bezig met herstelpunt maken...",
         "tw.alerts.lostPeripheralConnection": "Verbinding verloren met {extensionName}.",
         "tw.alerts.restorePointError": "Kon herstelpunt niet maken",
@@ -2533,9 +2533,9 @@
         "tw.viewOnScratch": "Ver projeto no Scratch"
     },
     "pt-br": {
-        "tw.accent.blue": "Azul",
-        "tw.accent.purple": "Roxo",
-        "tw.accent.red": "Vermelho",
+        "tw.accent.blue": "GekoWarp Azul",
+        "tw.accent.purple": "Scratch Roxo",
+        "tw.accent.red": "Turbowarp Vermelho",
         "tw.alerts.creatingRestorePoint": "Criando ponto de restauração...",
         "tw.alerts.lostPeripheralConnection": "Conexão com {extensionName} foi perdida.",
         "tw.alerts.savedToDisk": "Salvo no seu computador.",
@@ -2768,9 +2768,9 @@
         "tw.viewFeaturedProjects": "Vezi proiectele recomandate (dați click)."
     },
     "ru": {
-        "tw.accent.blue": "Синий",
-        "tw.accent.purple": "Фиолетовый",
-        "tw.accent.red": "Красный",
+        "tw.accent.blue": "GekoWarp Синий",
+        "tw.accent.purple": "Scratch Фиолетовый",
+        "tw.accent.red": "TurboWarp Красный",
         "tw.alerts.creatingRestorePoint": "Создание точку восстановления...",
         "tw.alerts.lostPeripheralConnection": "Потеря соединения с {extensionName}.",
         "tw.alerts.restorePointError": "Не удалось создать точку восстановления",
@@ -3357,9 +3357,9 @@
         "tw.usernameModal.reset": "รีเซ็ต"
     },
     "tr": {
-        "tw.accent.blue": "Mavi",
-        "tw.accent.purple": "Mor",
-        "tw.accent.red": "Kırmızı",
+        "tw.accent.blue": "GekoWarp Mavi",
+        "tw.accent.purple": "Scratch Mor",
+        "tw.accent.red": "TurboWarp Kırmızı",
         "tw.alerts.creatingRestorePoint": "Yükleme noktası yapılıyor",
         "tw.alerts.lostPeripheralConnection": "Bağlantı kesildi {extensionName}",
         "tw.alerts.restorePointError": "Geri yükleme noktası oluşturulamadı",
@@ -3761,9 +3761,9 @@
         "tw.viewOnScratch": "Xem dự án trên Scratch"
     },
     "zh-cn": {
-        "tw.accent.blue": "蓝色",
-        "tw.accent.purple": "紫色",
-        "tw.accent.red": "红色",
+        "tw.accent.blue": "GekoWarp 蓝",
+        "tw.accent.purple": "Scratch 紫",
+        "tw.accent.red": "TurboWarp 红",
         "tw.alerts.creatingRestorePoint": "新建还原点中...",
         "tw.alerts.lostPeripheralConnection": "与 {extensionName} 的连接中断了。",
         "tw.alerts.restorePointError": "无法创建还原点",
