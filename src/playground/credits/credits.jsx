@@ -85,7 +85,11 @@ const Credits = () => (
             </p>
         </section>
         <section>
-            <h2>Contributors</h2>
+            <h2>{APP_NAME} Contributors</h2>
+            <UserList users={UserData.gekowarp} />
+        </section>
+        <section>
+            <h2>Turbowarp Contributors</h2>
             <UserList users={UserData.contributors} />
         </section>
         <section>
