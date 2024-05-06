@@ -61,6 +61,49 @@ const fetchLibrary = async (info, base, tag) => {
     }));
     return data;
 };
+function generateImageFromColor(color) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute('width', '200');
+    svg.setAttribute('height', '200');
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute('width', '200');
+    rect.setAttribute('height', '200');
+    rect.setAttribute('fill', color);
+    svg.appendChild(rect);
+    const svgString = new XMLSerializer().serializeToString(svg);
+    const img = new Image();
+    img.src = 'data:image/svg+xml;base64,' + btoa(svgString);
+
+    return img.src;
+}
+
+const fetchrLibrary = async () => {
+    const res = await fetch('https://0832.ink/Gallery/extensionList.json');
+    if (!res.ok) {
+        throw new Error(`HTTP status ${res.status}`);
+    }
+    const data = await res.json();
+    let result = [];
+    data.map(extension => extension.compatibility == 'Rsc🍥' ? null : result.push({
+        name: extension.name,
+        nameTranslations: extension.nameTranslations || {},
+        description: extension.description,
+        descriptionTranslations: extension.descriptionTranslations || {},
+        extensionId: extension.id,
+        extensionURL: `https://0832.ink/Gallery/extensions/${extension.id}.js`,
+        iconURL: extension.color ? generateImageFromColor(extension.color) : extension.image,
+        tags: ['rc'],
+        credits: [extension.author],
+        docsURI: extension.docs ? `https://0832.ink/Gallery/extensions/docs/${extension.id}` : null,
+        samples: extension.samples ? extension.samples.map(sample => ({
+            href: `${process.env.ROOT}editor?project_url=https://0832.ink/Gallery/samples/${encodeURIComponent(sample)}.sb3`,
+            text: sample
+        })) : null,
+        incompatibleWithScratch: true,
+        featured: true
+    }));
+    return result;
+};
 
 const messages = defineMessages({
     extensionTitle: {
@@ -110,7 +153,7 @@ class ExtensionLibrary extends React.PureComponent {
              */
             const autoFetch = () => {
                 const gallery = [];
-                const promises = libs.map(lib => fetchLibrary(lib.info, lib.base, lib.tag));
+                const promises = libs.map(lib => fetchLibrary(lib.info, lib.base, lib.tag)).concat(fetchrLibrary());
                 Promise.all(promises)
                     .then(results => {
                         const mergedGallery = results.reduce((acc, result) => acc.concat(result), gallery);
