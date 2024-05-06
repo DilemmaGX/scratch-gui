@@ -11,12 +11,6 @@ const libs = [
         info: 'https://dilemmagx.github.io/Geko-Extension-Gallery/info.json',
         base: 'https://dilemmagx.github.io/Geko-Extension-Gallery/',
         tag: 'geko'
-    },
-    {
-        name: 'rCodenow',
-        info: 'https://dilemmagx.github.io/Geko-Extension-Gallery/libs/rc.json',
-        base: 'https://0832.ink/Gallery/',
-        tag: 'rc'
     }
 ];
 
