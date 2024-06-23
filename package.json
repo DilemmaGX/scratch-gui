@@ -4,12 +4,12 @@
   "description": "Graphical User Interface for creating and running Scratch 3.0 projects",
   "author": "Massachusetts Institute of Technology",
   "license": "GPL-3.0",
-  "homepage": "https://github.com/LLK/scratch-gui#readme",
+  "homepage": "./",
   "repository": {
     "type": "git",
     "url": "https://github.com/LLK/scratch-gui.git"
   },
-  "main": "./dist/scratch-gui.js",
+  "main": "./scripts/main.js",
   "scripts": {
     "build": "npm run clean && webpack --colors --bail",
     "clean": "rimraf ./build && mkdirp build && rimraf ./dist && mkdirp dist",
@@ -24,7 +24,10 @@
     "test:lint": "eslint . --ext .js,.jsx",
     "test:unit": "jest test[\\\\/]unit[\\\\/]addons",
     "test:smoke": "jest --runInBand test[\\\\/]smoke",
-    "watch": "webpack --colors --watch"
+    "watch": "webpack --colors --watch",
+    "electron:dev": "electron .",
+    "electron": "npm run build && electron .",
+    "electron:exe": "npm run build && electron-packager ./ \"GekoWarp\" --out ./Application --app-version 1.0.0 --overwrite --asar --prune --ignore=node_modules"
   },
   "config": {
     "commitizen": {
@@ -50,7 +53,10 @@
     "core-js": "2.5.7",
     "css-loader": "^1.0.0",
     "dapjs": "2.3.0",
+    "electron": "^31.0.2",
+    "electron-packager": "^17.1.2",
     "es6-object-assign": "1.1.0",
+    "esbuild-plugin-inline-image": "^0.0.9",
     "get-float-time-domain-data": "0.1.0",
     "get-user-media-promise": "1.1.4",
     "immutable": "3.8.2",
