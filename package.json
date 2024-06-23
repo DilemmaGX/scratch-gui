@@ -10,6 +10,10 @@
     "url": "https://github.com/LLK/scratch-gui.git"
   },
   "main": "./scripts/main.js",
+  "electronPackagerConfig": {
+    "packageManager": "npm",
+    "icon": "static/images/source.ico"
+  },
   "scripts": {
     "build": "npm run clean && webpack --colors --bail",
     "clean": "rimraf ./build && mkdirp build && rimraf ./dist && mkdirp dist",
@@ -27,7 +31,7 @@
     "watch": "webpack --colors --watch",
     "electron:dev": "electron .",
     "electron": "npm run build && electron .",
-    "electron:exe": "npm run build && electron-packager ./ \"GekoWarp\" --out ./Application --app-version 1.0.0 --overwrite --asar --prune --ignore=node_modules"
+    "electron:exe": "npm run build && electron-packager ./ \"GekoWarp\" --out ./Application --app-version 1.0.0 --overwrite --asar --prune --ignore=node_modules --icon ./static/images/source.ico"
   },
   "config": {
     "commitizen": {
