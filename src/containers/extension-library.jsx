@@ -2,7 +2,7 @@ import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
 import VM from 'scratch-vm';
-import {defineMessages, injectIntl, intlShape} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import log from '../lib/log';
 
 import extensionLibraryContent, {
@@ -62,17 +62,17 @@ const fetchLibrary = async (info, base, tag) => {
     return data;
 };
 function generateImageFromColor(color) {
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('width', '200');
     svg.setAttribute('height', '200');
-    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     rect.setAttribute('width', '200');
     rect.setAttribute('height', '200');
     rect.setAttribute('fill', color);
     svg.appendChild(rect);
     const svgString = new XMLSerializer().serializeToString(svg);
     const img = new Image();
-    img.src = 'data:image/svg+xml;base64,' + btoa(svgString);
+    img.src = `data:image/svg+xml;base64,${btoa(svgString)}`;
 
     return img.src;
 }
@@ -83,8 +83,8 @@ const fetchrLibrary = async () => {
         throw new Error(`HTTP status ${res.status}`);
     }
     const data = await res.json();
-    let result = [];
-    data.map(extension => extension.compatibility == 'Rsc🍥' ? null : result.push({
+    const result = [];
+    data.map(extension => (extension.compatibility == 'Rsc🍥' ? null : result.push({
         name: extension.name,
         nameTranslations: extension.nameTranslations || {},
         description: extension.description,
@@ -101,7 +101,7 @@ const fetchrLibrary = async () => {
         })) : null,
         incompatibleWithScratch: true,
         featured: true
-    }));
+    })));
     return result;
 };
 
@@ -132,7 +132,7 @@ const translateGalleryItem = (extension, locale) => ({
 const cachedGallery = null;
 
 class ExtensionLibrary extends React.PureComponent {
-    constructor (props) {
+    constructor(props) {
         super(props);
         bindAll(this, [
             'handleItemSelect'
@@ -143,7 +143,7 @@ class ExtensionLibrary extends React.PureComponent {
             galleryTimedOut: false
         };
     }
-    componentDidMount () {
+    componentDidMount() {
         if (!this.state.gallery) {
 
             /**
@@ -152,19 +152,24 @@ class ExtensionLibrary extends React.PureComponent {
              * See `../geko/extension-libraries.js` for mor details.
              */
             const autoFetch = () => {
-                const gallery = [];
-                const promises = libs.map(lib => fetchLibrary(lib.info, lib.base, lib.tag)).concat(fetchrLibrary());
-                Promise.all(promises)
-                    .then(results => {
-                        const mergedGallery = results.reduce((acc, result) => acc.concat(result), gallery);
-                        this.setState({gallery: mergedGallery});
-                    })
-                    .catch(error => console.error(error));
+                try {
+                    const gallery = [];
+                    const promises = libs.map(lib => fetchLibrary(lib.info, lib.base, lib.tag))
+                    // .concat(fetchrLibrary());
+                    Promise.all(promises)
+                        .then(results => {
+                            const mergedGallery = results.reduce((acc, result) => acc.concat(result), gallery);
+                            this.setState({ gallery: mergedGallery });
+                        })
+                        .catch(error => console.error(error));
+                } catch (e) {
+                    console.error(e);
+                }
             };
             autoFetch();
         }
     }
-    handleItemSelect (item) {
+    handleItemSelect(item) {
         if (item.href) {
             return;
         }
@@ -199,7 +204,7 @@ class ExtensionLibrary extends React.PureComponent {
             }
         }
     }
-    render () {
+    render() {
         let library = null;
         if (this.state.gallery || this.state.galleryError || this.state.galleryTimedOut) {
             library = extensionLibraryContent.map(toLibraryItem);

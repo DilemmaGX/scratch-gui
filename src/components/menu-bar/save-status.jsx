@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
+import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 
